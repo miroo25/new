@@ -296,6 +296,73 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .fade-in { animation: fadeIn 0.35s ease; }
+
+        @media print {
+            .be-header { background: #1a1a3e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 16px 20px; }
+            .be-header::before, .be-header::after { display: none; }
+            .be-header h1 { font-size: 18px; }
+            .be-header .subtitle { font-size: 10px; }
+            .btn-reset, .btn-add-item, .btn-remove-item, .no-print { display: none !important; }
+            .be-body { padding: 16px 20px; max-width: 100%; }
+            .stats-grid { gap: 12px; margin-bottom: 16px; }
+            .stat-card { padding: 12px 14px; break-inside: avoid; }
+            .stat-card .stat-value { font-size: 16px; }
+            .stat-card .stat-label { font-size: 9px; }
+            .stat-card::before { display: block !important; }
+            .stat-card.amber::before, .stat-card.purple::before,
+            .stat-card.cyan::before, .stat-card.green::before { display: block !important; }
+            .cost-card { break-inside: avoid; padding: 14px 16px; }
+            .price-card { break-inside: avoid; padding: 12px 16px; }
+            .chart-card { break-inside: avoid; }
+            .chart-card .chart-wrap { height: 240px; }
+            .summary-card { break-inside: avoid; }
+            .scenarios-card { break-inside: avoid; }
+            th { background: #f5f3ff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .default-row td { background: #f0fdf4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .summary-item.highlight { background: linear-gradient(135deg, #f0fdf4, #dcfce7) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .summary-interpret { background: linear-gradient(135deg, #fef3c7, #fde68a) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            body { background: #fff; }
+            .be-footer { display: none; }
+            .inputs-grid-main { gap: 14px; }
+            .chart-summary-grid { gap: 14px; }
+            canvas { max-width: 100%; }
+            .cost-table td input[type="number"] { border: 1px solid #ddd; background: #f9f9f9; }
+            ins.adsbygoogle { display: none !important; }
+        }
+
+        @media (max-width: 480px) {
+            .be-header { padding: 14px 12px; }
+            .be-header-content { flex-direction: column; gap: 10px; align-items: flex-start; }
+            .be-header h1 { font-size: 16px; }
+            .be-header-right { gap: 10px; }
+            img[alt="Logo"] { width: 36px; height: 36px; }
+            .be-body { padding: 10px; }
+            .stats-grid { gap: 10px; margin-bottom: 14px; }
+            .stat-card { padding: 12px 14px; }
+            .stat-card .stat-value { font-size: 16px; }
+            .stat-card .icon-wrap { width: 28px; height: 28px; font-size: 12px; margin-bottom: 8px; }
+            .cost-card { padding: 12px 14px; }
+            .cost-card .cost-title { font-size: 13px; }
+            .cost-table td { font-size: 11px; padding: 5px 8px; }
+            .cost-table td input[type="number"] { width: 70px; font-size: 11px; padding: 5px 6px; }
+            .cost-table th { font-size: 9px; padding: 6px 8px; }
+            .cost-table th:last-child { width: 80px; }
+            .price-card { padding: 12px 14px; flex-direction: column; align-items: stretch; gap: 10px; }
+            .price-card input { width: 100%; font-size: 16px; }
+            .chart-card { padding: 14px; }
+            .chart-card .chart-header { font-size: 12px; flex-direction: column; gap: 8px; align-items: flex-start; }
+            .chart-wrap { height: 220px; }
+            .summary-card { padding: 14px; }
+            .summary-item { font-size: 11px; padding: 6px 10px; }
+            .summary-interpret { font-size: 10px; padding: 10px; }
+            .scenarios-card { padding: 14px; }
+            .scenarios-card .scenarios-title { font-size: 12px; }
+            th { font-size: 9px; padding: 8px 8px; }
+            td { font-size: 10px; padding: 8px 8px; }
+            .be-footer { font-size: 9px; padding: 10px; }
+            .chart-status { font-size: 9px; padding: 2px 8px; }
+            .btn-reset { font-size: 10px; padding: 6px 12px; }
+        }
     </style>
 </head>
 <body>
@@ -310,6 +377,7 @@
                 <div class="subtitle"><i class="fas fa-calculator" style="margin-left:4px;"></i> Break-Even Analysis — أدخل التكاليف بالتفصيل واحسب نقطة التعادل</div>
             </div>
         </div>
+        <button onclick="window.print()" class="btn-reset" style="border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.12);color:#34d399;"><i class="fas fa-print"></i> طباعة التقرير</button>
         <button onclick="resetBEPInputs()" class="btn-reset"><i class="fas fa-rotate-left"></i> إعادة تعيين</button>
     </div>
 </header>
